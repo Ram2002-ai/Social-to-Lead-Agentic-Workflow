@@ -38,11 +38,11 @@ streamlit run app.py
 
 
 
-## 2. Architecture Explanation 
+# 2. Architecture Explanation 
     Why LangGraph?
     LangGraph was chosen because it allows us to model the conversation as a state machine with cycles and conditional routing. Unlike simple LangChain chains, LangGraph gives fine‑grained control over the flow: the agent can detect intent, answer a RAG query, then later switch to lead collection without losing context. This is essential for a realistic sales agent that must pause mid‑flow, wait for user input, and resume exactly where it left off.
 
-## How State is Managed
+# How State is Managed
     The core state is defined in AgentState (a TypedDict) containing:
 
     messages: conversation history (role/content pairs)
@@ -57,7 +57,7 @@ streamlit run app.py
 
 - For production persistence (e.g., across HTTP requests), LangGraph checkpointers can serialize the state to Redis or a database – but for this local demo, the state lives only in memory for the duration of the Streamlit session.
 
-## 3. WhatsApp Integration Using Webhooks
+# 3. WhatsApp Integration Using Webhooks
 - To integrate this agent with WhatsApp, follow this high‑level plan:
 
     Step 1 – WhatsApp Business API Access
